@@ -1,35 +1,55 @@
-@import './base.css';
+@import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Unbounded:wght@200..900&display=swap");
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #0f0f0f;
+  color: white;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Unbounded", sans-serif;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+h1 {
+  font-size: 120px;
+  line-height: 120px;
+  text-transform: uppercase;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+h2 {
+  font-size: 56px;
+  line-height: 88px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 48px;
+  line-height: 64px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+p {
+  color: #60606c;
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+sup {
+  font-size: 75%;
+  line-height: 1;
+  text-transform: lowercase;
+  color: #8711c1;
 }
