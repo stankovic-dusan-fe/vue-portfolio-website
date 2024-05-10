@@ -28,7 +28,7 @@
   >
     <div class="maxwidth-container">
       <p>Technologies I've been using</p>
-      <div class="skills">
+      <div class="technologies">
         <h3>Vue.js</h3>
         <h3>TypeScript</h3>
         <h3>Solidty</h3>
@@ -42,6 +42,16 @@
         <h3>Rest API</h3>
         <h3>Rust<sup>(limited)</sup></h3>
       </div>
+    </div>
+  </div>
+
+  <div
+    class="fullscreen-container"
+    id="skills-section"
+  >
+    <div class="maxwidth-container">
+      <p id="skills-intro">I’m always considering various factors during implementation:DOES IT MATCH THE DESIGN SOLUTION?Are there any edge cases that need to be covered? How can I ensure THAT code remains efficient as the system grows? Would the code easily understandable by other DEVELOPERS?</p>
+      <Skills />
     </div>
   </div>
 
@@ -78,6 +88,7 @@
 <script setup>
 import FFGeometry from "@/components/FFGeometry.vue";
 import Projects from "@/components/Projects.vue";
+import Skills from "@/components/Skills.vue";
 </script>
 
 <style lang="scss">
@@ -130,12 +141,18 @@ import Projects from "@/components/Projects.vue";
     align-self: flex-end;
     margin-bottom: 24px;
   }
-  .skills {
+  .technologies {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
     gap: 24px;
     font-weight: 400;
+  }
+}
+
+#skills-section {
+  #skills-intro {
+    width: 50%;
   }
 }
 

@@ -12,10 +12,10 @@
     <div class="project-details">
       <h2>{{ title }}</h2>
       <p>{{ desc }}</p>
-      <RouterLink
+      <a
+        target="_blank"
         v-show="activeCard"
-        :to="link"
-        >View Project Details</RouterLink
+        >View Project Details</a
       >
     </div>
   </div>
@@ -23,9 +23,10 @@
 
 <script setup>
 import { ref } from "vue";
-import { RouterLink } from "vue-router";
 
 const activeCard = ref(false);
+
+const showModal = ref(true);
 
 const props = defineProps({
   title: String,
@@ -38,7 +39,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .card-container {
   cursor: default;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -47,19 +48,19 @@ const props = defineProps({
   padding: 24px 0;
 
   .project-img {
-    transition: ease-out 0.25s;
+    transition: ease-out 0.3s;
     width: 0px;
     height: 160px;
     background-color: white;
-    background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   .project-img-active {
-    transition: ease-out 0.25s;
+    transition: ease-out 0.3s;
     width: 280px;
-    height: 160px;
+    height: 180px;
     margin-right: 32px;
   }
 
@@ -70,7 +71,6 @@ const props = defineProps({
     a {
       color: #2472fc;
       font-family: "Unbounded", sans-serif;
-
       font-size: 24px;
       line-height: 32px;
       text-decoration: none;
