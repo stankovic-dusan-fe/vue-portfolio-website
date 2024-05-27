@@ -3,16 +3,12 @@
     class="fullscreen-container"
     id="hero-section"
   >
-    <img
-      src="../../assets/images/circle-bg.svg"
-      alt="circle-background"
-    />
     <div class="hero-text">
       <h1>Ćao! I’m Dušan</h1>
       <p>Front<span>-</span>End<span>_</span>Developer<span>.</span></p>
     </div>
   </div>
-  <div class="fullscreen-container">
+  <!-- <div class="fullscreen-container">
     <FFGeometry />
   </div>
   <div
@@ -82,17 +78,21 @@
         </p>
       </div>
     </div>
-  </div>
+  </div> -->
+  <ProjectModal />
 </template>
 
 <script setup>
 import FFGeometry from "@/components/FFGeometry.vue";
 import Projects from "@/components/Projects.vue";
 import Skills from "@/components/Skills.vue";
+
+import ProjectModal from "@/components/ProjectModal.vue";
 </script>
 
 <style lang="scss">
 .fullscreen-container {
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -111,6 +111,11 @@ import Skills from "@/components/Skills.vue";
 }
 
 #hero-section {
+  background-image: url(../../assets/images/circle-bg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   img {
     position: absolute;
     z-index: 0;

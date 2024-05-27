@@ -6,20 +6,26 @@
     :desc="project.desc"
     :img="`/src/assets/images/${project.img}`"
     :link="project.link"
-  ></ProjectCard>
+  >
+  </ProjectCard>
+  <ProjectModal project="project" />
 </template>
 
 <script setup>
 import { ref } from "vue";
 
 import ProjectCard from "./ProjectCard.vue";
+import ProjectModal from "./ProjectModal.vue";
 
 const projects = ref([
   {
     title: "Weather app",
     desc: "API and responsive design focus",
     img: "weather-desing.jpg",
-    link: "https://vue-weather-dashboard.netlify.app/",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    web: "https://vue-weather-dashboard.netlify.app/",
+    tech: ["Vue.js", "JavaScript", "CSS", "HTML"],
+    git: "https://github.com/duhansan/vue-weather-dashboard",
   },
   {
     title: "Budget Tracker",

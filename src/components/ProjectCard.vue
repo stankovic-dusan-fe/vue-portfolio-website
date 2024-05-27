@@ -26,8 +26,6 @@ import { ref } from "vue";
 
 const activeCard = ref(false);
 
-const showModal = ref(true);
-
 const props = defineProps({
   title: String,
   desc: String,
@@ -48,7 +46,8 @@ const props = defineProps({
   padding: 24px 0;
 
   .project-img {
-    transition: ease-out 0.3s;
+    transition: ease-out 0.4s;
+    transition: e;
     width: 0px;
     height: 160px;
     background-color: white;
@@ -58,7 +57,7 @@ const props = defineProps({
   }
 
   .project-img-active {
-    transition: ease-out 0.3s;
+    transition: ease-out 0.4s;
     width: 280px;
     height: 180px;
     margin-right: 32px;

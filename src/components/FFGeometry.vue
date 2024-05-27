@@ -8,6 +8,7 @@
         viewBox="0 0 640 640"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        ref="svgCircle"
       >
         <circle
           cx="320"
@@ -17,40 +18,14 @@
           stroke-width="2"
         />
         <circle
-          cx="280"
-          cy="320"
-          r="279"
-          stroke="#8711C1"
-          stroke-width="2"
-        />
-        <circle
-          cx="240"
-          cy="320"
-          r="239"
-          stroke="#8711C1"
-          stroke-width="2"
-        />
-        <circle
-          cx="200"
-          cy="316"
-          r="199"
-          stroke="#8711C1"
-          stroke-width="2"
-        />
-        <circle
-          cx="160"
-          cy="320"
-          r="159"
-          stroke="#8711C1"
-          stroke-width="2"
-        />
-        <circle
-          cx="120"
-          cy="320"
-          r="119"
-          fill="#2E0045"
-          stroke="#8711C1"
-          stroke-width="2"
+          v-for="(circle, index) in computedCircles"
+          :key="index"
+          :cx="circle.cx"
+          :cy="circle.cy"
+          :r="circle.r"
+          :fill="circle.fill"
+          :stroke="circle.stroke"
+          :stroke-width="circle.strokeWidth"
         />
       </svg>
     </div>
@@ -120,7 +95,74 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, reactive, computed, onMounted } from "vue";
+import { useMouse } from "@vueuse/core";
+
+const { x: mouseX, y: mouseY } = useMouse();
+
+const circles = reactive([
+  { r: 279, fill: "none", stroke: "#8711C1", strokeWidth: 2 },
+  { r: 239, fill: "none", stroke: "#8711C1", strokeWidth: 2 },
+  { r: 199, fill: "none", stroke: "#8711C1", strokeWidth: 2 },
+  { r: 159, fill: "none", stroke: "#8711C1", strokeWidth: 2 },
+  { r: 119, fill: "#2E0045", stroke: "#8711C1", strokeWidth: 2 },
+]);
+
+const svgCircle = ref(null);
+const centerX = ref(320);
+const centerY = ref(320);
+const maxRadius = ref(320);
+
+let parentRect = null;
+
+const computedCircles = computed(() => {
+  if (!mouseX.value || !mouseY.value) {
+    return circles.map((circle) => ({
+      ...circle,
+      cx: centerX.value,
+      cy: centerY.value,
+    }));
+  }
+
+  if (!parentRect) {
+    return circles.map((circle) => ({
+      ...circle,
+      cx: centerX.value,
+      cy: centerY.value,
+    }));
+  }
+
+  const localMouseX = mouseX.value - parentRect.left;
+  const localMouseY = mouseY.value - parentRect.top;
+
+  return circles.map((circle) => {
+    const r = circle.r;
+
+    let dx = localMouseX - centerX.value;
+    let dy = localMouseY - centerY.value;
+
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance + r > maxRadius.value) {
+      const angle = Math.atan2(dy, dx);
+      dx = (maxRadius.value - r) * Math.cos(angle);
+      dy = (maxRadius.value - r) * Math.sin(angle);
+    }
+
+    return {
+      ...circle,
+      cx: centerX.value + dx,
+      cy: centerY.value + dy,
+    };
+  });
+});
+
+onMounted(() => {
+  parentRect = svgCircle.value.getBoundingClientRect();
+  console.log(parentRect);
+});
+</script>
 
 <style lang="scss" scoped>
 .ff-container {
