@@ -8,7 +8,6 @@
         viewBox="0 0 640 640"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        ref="svgCircle"
       >
         <circle
           cx="320"
@@ -18,14 +17,40 @@
           stroke-width="2"
         />
         <circle
-          v-for="(circle, index) in computedCircles"
-          :key="index"
-          :cx="circle.cx"
-          :cy="circle.cy"
-          :r="circle.r"
-          :fill="circle.fill"
-          :stroke="circle.stroke"
-          :stroke-width="circle.strokeWidth"
+          cx="280"
+          cy="320"
+          r="279"
+          stroke="#8711C1"
+          stroke-width="2"
+        />
+        <circle
+          cx="240"
+          cy="320"
+          r="239"
+          stroke="#8711C1"
+          stroke-width="2"
+        />
+        <circle
+          cx="200"
+          cy="316"
+          r="199"
+          stroke="#8711C1"
+          stroke-width="2"
+        />
+        <circle
+          cx="160"
+          cy="320"
+          r="159"
+          stroke="#8711C1"
+          stroke-width="2"
+        />
+        <circle
+          cx="120"
+          cy="320"
+          r="119"
+          fill="#2E0045"
+          stroke="#8711C1"
+          stroke-width="2"
         />
       </svg>
     </div>
@@ -95,7 +120,7 @@
   </div>
 </template>
 
-<script setup>
+<!-- <script setup>
 import { ref, reactive, computed, onMounted } from "vue";
 import { useMouse } from "@vueuse/core";
 
@@ -162,13 +187,14 @@ onMounted(() => {
   parentRect = svgCircle.value.getBoundingClientRect();
   console.log(parentRect);
 });
-</script>
+</script> -->
 
 <style lang="scss" scoped>
 .ff-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -222;
 
   .frame {
     position: relative;

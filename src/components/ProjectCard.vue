@@ -12,11 +12,7 @@
     <div class="project-details">
       <h2>{{ title }}</h2>
       <p>{{ desc }}</p>
-      <a
-        target="_blank"
-        v-show="activeCard"
-        >View Project Details</a
-      >
+      <a @click="$emit('openModal')">View Project Details</a>
     </div>
   </div>
 </template>
@@ -26,12 +22,7 @@ import { ref } from "vue";
 
 const activeCard = ref(false);
 
-const props = defineProps({
-  title: String,
-  desc: String,
-  img: String,
-  link: String,
-});
+const props = defineProps(["title", "desc", "img", "link", "project"]);
 </script>
 
 <style lang="scss" scoped>
@@ -46,10 +37,10 @@ const props = defineProps({
   padding: 24px 0;
 
   .project-img {
-    transition: ease-out 0.4s;
+    transition: ease-out 0.5s;
     transition: e;
     width: 0px;
-    height: 160px;
+    height: 200px;
     background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
@@ -57,9 +48,9 @@ const props = defineProps({
   }
 
   .project-img-active {
-    transition: ease-out 0.4s;
+    transition: ease-out 0.5s;
     width: 280px;
-    height: 180px;
+    height: 200px;
     margin-right: 32px;
   }
 
@@ -74,6 +65,7 @@ const props = defineProps({
       line-height: 32px;
       text-decoration: none;
       text-transform: uppercase;
+      cursor: pointer;
     }
   }
 }

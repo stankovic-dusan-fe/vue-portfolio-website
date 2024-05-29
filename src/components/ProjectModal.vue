@@ -1,30 +1,41 @@
 <template>
   <div
-    class="project-modal"
-    v-if="showModal"
+    class="modal-wrapper"
+    v-if="show"
   >
-    <p
-      class="close-modal"
-      @click="closeModal"
+    <div
+      class="project-modal"
+      ref="modal"
     >
-      [X] CLOSE
-    </p>
-    <div class="modal-content">
-      <div class="project-info">
-        <h2>GROCERY STORE</h2>
-        <h2>(concept)</h2>
-        <p>Simplified version of grocery store application as an exploration of VUE state management, and PINIA. App contains simple store interface, with dynamic cart controls, shopping cart calculation, favourite items and more.</p>
-        <p id="tech">VUE.JS, PINIA, TAILWIND</p>
-        <div class="buttons">
-          <BaseButton button-title="View live app" />
-          <BaseButton button-title="View Github" />
+      <p
+        class="close-modal"
+        @click="$emit('closeModal')"
+      >
+        [X] CLOSE
+      </p>
+      <div class="modal-content">
+        <div class="project-info">
+          <h2>{{ project.title }}</h2>
+
+          <p>{{ project.details }}</p>
+          <p id="tech">{{ project.tech.join(", ") }}</p>
+          <div class="buttons">
+            <BaseButton
+              button-title="View live app"
+              :link="project.web"
+            />
+            <BaseButton
+              button-title="View Github"
+              :link="project.git"
+            />
+          </div>
         </div>
-      </div>
-      <div class="project-image">
-        <img
-          src="../assets/images/weather-desing.jpg"
-          alt="project-image-modul"
-        />
+        <div class="project-image">
+          <img
+            :src="require(`@/assets/images/${project.img}`)"
+            alt="project-image-modul"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -32,28 +43,43 @@
 
 <script setup>
 import { ref } from "vue";
+import { onClickOutside } from "@vueuse/core";
 
 import BaseButton from "../components/UI/BaseButton.vue";
 
-const showModal = ref(true);
+const props = defineProps(["show", "project"]);
 
-const props = defineProps(["project"]);
+const modal = ref(null);
 
-const closeModal = () => {
-  showModal.value = false;
-};
+const emit = defineEmits(["close-modal"]);
+
+onClickOutside(modal, () => {
+  emit("close-modal");
+});
 </script>
 
 <style scoped>
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .project-modal {
   position: fixed;
   z-index: 1;
   bottom: 0;
   left: 0;
   right: 0;
+  max-width: calc(1440px + 160px);
   background-color: white;
   color: black;
-  width: calc(100% - 220px);
   height: auto;
   border-radius: 64px 64px 0 0;
   margin: 0 auto;
@@ -75,9 +101,9 @@ const closeModal = () => {
 }
 
 .modal-content {
-  display: flex;
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-gap: 64px; */
 }
 
 .modal-content h2 {
@@ -107,12 +133,13 @@ const closeModal = () => {
 }
 
 .project-image {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .project-image img {
-  width: 80%;
+  width: 60%;
 }
 </style>

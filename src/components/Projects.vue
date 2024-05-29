@@ -6,9 +6,15 @@
     :desc="project.desc"
     :img="`/src/assets/images/${project.img}`"
     :link="project.link"
+    :project="project"
+    @open-modal="openModal(project)"
   >
   </ProjectCard>
-  <ProjectModal project="project" />
+  <ProjectModal
+    :show="isModalVisible"
+    @close-modal="closeModal"
+    :project="selectedProject"
+  />
 </template>
 
 <script setup>
@@ -17,41 +23,45 @@ import { ref } from "vue";
 import ProjectCard from "./ProjectCard.vue";
 import ProjectModal from "./ProjectModal.vue";
 
+const isModalVisible = ref(false);
+const selectedProject = ref(null);
+
+const openModal = (project) => {
+  selectedProject.value = project;
+  isModalVisible.value = true;
+};
+
+const closeModal = () => {
+  isModalVisible.value = false;
+};
+
 const projects = ref([
   {
-    title: "Weather app",
+    title: "Weather App",
     desc: "API and responsive design focus",
-    img: "weather-desing.jpg",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    img: "weather-project.png",
+    details: "Track weather forecasts effortlessly with my Vue Weather Dashboard. Utilizing Vue.js javascript framework and interesting Vue.js features, this application offers a seamless experience for users on various devices. Integrated with the OpenWeatherMap API for global forecast and historical data.",
+    tech: ["Vue.js", "JavaScript", "CSS", "HTML", "API"],
     web: "https://vue-weather-dashboard.netlify.app/",
-    tech: ["Vue.js", "JavaScript", "CSS", "HTML"],
-    git: "https://github.com/duhansan/vue-weather-dashboard",
+    git: "https://github.com/stankovic-dusan-fe/vue-weather-dashboard",
   },
   {
-    title: "Budget Tracker",
-    desc: "",
-    img: "https://cdn.dribbble.com/userupload/2837272/file/original-013c89203c5c1a65195340c225e6654f.png?resize=752x470&vertical=center",
-    link: "#",
+    title: "Budget Tracker App",
+    desc: "API and responsive design focus",
+    img: "#",
+    details: "Track weather forecasts effortlessly with my Vue Weather Dashboard. Utilizing Vue.js javascript framework and interesting Vue.js features, this application offers a seamless experience for users on various devices. Integrated with the OpenWeatherMap API for global forecast and historical data.",
+    tech: ["Vue.js", "JavaScript", "CSS", "HTML", "API"],
+    web: "https://vue-weather-dashboard.netlify.app/",
+    git: "https://github.com/stankovic-dusan-fe/vue-weather-dashboard",
   },
-
   {
-    title: "Grocery Store",
-    desc: "Pinia State management exploration",
-    img: "https://cdn.dribbble.com/userupload/2837272/file/original-013c89203c5c1a65195340c225e6654f.png?resize=752x470&vertical=center",
-    link: "#",
+    title: "Grocery Store App",
+    desc: "API and responsive design focus",
+    img: "grocery-store.png",
+    details: "Track weather forecasts effortlessly with my Vue Weather Dashboard. Utilizing Vue.js javascript framework and interesting Vue.js features, this application offers a seamless experience for users on various devices. Integrated with the OpenWeatherMap API for global forecast and historical data.",
+    tech: ["Vue.js", "JavaScript", "CSS", "HTML", "API"],
+    web: "https://vue-weather-dashboard.netlify.app/",
+    git: "https://github.com/stankovic-dusan-fe/vue-weather-dashboard",
   },
-  // {
-  //   title: "Porfolio Template",
-  //   desc: "It’s this site that you are currently on :)",
-  //   // Promeni slike
-  //   img: "https://cdn.dribbble.com/userupload/2837272/file/original-013c89203c5c1a65195340c225e6654f.png?resize=752x470&vertical=center",
-  //   link: "#",
-  // },
-  // {
-  //   title: "Budget Tracker",
-  //   desc: "State management exploration",
-  //   img: "https://cdn.dribbble.com/userupload/2837272/file/original-013c89203c5c1a65195340c225e6654f.png?resize=752x470&vertical=center",
-  //   link: "#",
-  // },
 ]);
 </script>

@@ -8,7 +8,7 @@
       <p>Front<span>-</span>End<span>_</span>Developer<span>.</span></p>
     </div>
   </div>
-  <!-- <div class="fullscreen-container">
+  <div class="fullscreen-container">
     <FFGeometry />
   </div>
   <div
@@ -78,7 +78,7 @@
         </p>
       </div>
     </div>
-  </div> -->
+  </div>
   <ProjectModal />
 </template>
 
@@ -118,11 +118,11 @@ import ProjectModal from "@/components/ProjectModal.vue";
 
   img {
     position: absolute;
-    z-index: 0;
+    z-index: -1;
   }
 
   .hero-text {
-    z-index: 1;
+    z-index: 0;
     font-size: 1.5rem;
     text-align: right;
 
