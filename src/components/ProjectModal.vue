@@ -17,7 +17,7 @@
         <div class="project-info">
           <h2>{{ project.title }}</h2>
 
-          <p>{{ project.details }}</p>
+          <p id="details">{{ project.details }}</p>
           <p id="tech">{{ project.tech.join(", ") }}</p>
           <div class="buttons">
             <BaseButton
@@ -30,12 +30,7 @@
             />
           </div>
         </div>
-        <div class="project-image">
-          <img
-            :src="require(`@/assets/images/${project.img}`)"
-            alt="project-image-modul"
-          />
-        </div>
+        <div class="project-image"></div>
       </div>
     </div>
   </div>
@@ -89,6 +84,7 @@ onClickOutside(modal, () => {
   align-items: center;
   padding: 80px;
 }
+
 .close-modal {
   display: flex;
   justify-content: flex-end;
@@ -96,7 +92,7 @@ onClickOutside(modal, () => {
   font-size: 16px;
   font-weight: 300;
   width: 100%;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
   cursor: pointer;
 }
 
@@ -140,6 +136,55 @@ onClickOutside(modal, () => {
 }
 
 .project-image img {
-  width: 60%;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .project-modal {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    padding: 32px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .project-info h2 {
+    line-height: normal;
+    margin-bottom: 20px;
+  }
+
+  .close-modal {
+    margin-bottom: 20px;
+  }
+  .modal-content {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+  }
+  .project-image {
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 20px;
+
+    background-image: url("../assets/images/weather-project.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .modal-content p {
+    margin-top: 0px;
+  }
+
+  .buttons {
+    justify-content: space-between;
+  }
+
+  #tech {
+    margin: 24px 0;
+  }
 }
 </style>

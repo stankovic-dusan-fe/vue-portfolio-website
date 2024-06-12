@@ -8,9 +8,13 @@
       <p>Front<span>-</span>End<span>_</span>Developer<span>.</span></p>
     </div>
   </div>
-  <div class="fullscreen-container">
+  <div
+    class="fullscreen-container"
+    id="FFGeometry-section"
+  >
     <FFGeometry />
   </div>
+
   <div
     class="maxwidth-container"
     id="projects-section"
@@ -18,6 +22,7 @@
     <p id="projects-intro">These are my tech exploration projects, experimenting with different features and technologies</p>
     <Projects />
   </div>
+
   <div
     class="grey-background"
     id="tech-section"
@@ -36,7 +41,6 @@
         <h3>Tailwind</h3>
         <h3>Pinia</h3>
         <h3>Rest API</h3>
-        <h3>Rust<sup>(limited)</sup></h3>
       </div>
     </div>
   </div>
@@ -55,8 +59,9 @@
     class="maxwidth-container"
     id="bio-section"
   >
-    <p>Currently working <a href="https://www.linkedin.com/company/moonstruck/">@Moonstruck</a>, on different blockchain projects<sup>(both, smart contracts and UI)</sup> using a lot of TypeScript. My desire is to focus more on front-end development, with the knowledge I have to master more Vue, React...</p>
+    <p>Currently working as a Solidtiy smart contract developer <a href="https://www.linkedin.com/company/moonstruck/">@Moonstruck</a>, on different blockchain projects<sup>(both, smart contracts and front)</sup>. My desire is to focus more on front-end development, with the knowledge I have to master more Vue, React...</p>
   </div>
+
   <div
     class="grey-background"
     id="contact-section"
@@ -71,23 +76,20 @@
         <p><a href="mailto:stankovic_dusan@outlook.com">mailto:stankovic_dusan@outlook.com</a></p>
       </div>
       <div class="contact-right">
-        <p><a href="#">Linkedin <</a></p>
-        <p><a href="#">Github <</a></p>
+        <p><a href="https://www.linkedin.com/in/stankovic-dusan/">Linkedin <</a></p>
+        <p><a href="https://github.com/stankovic-dusan-fe">Github <</a></p>
         <p>
-          <a href="#"><s>Twitter</s> X <</a>
+          <a href="https://twitter.com/Dusan42088015"><s>Twitter</s> X <</a>
         </p>
       </div>
     </div>
   </div>
-  <ProjectModal />
 </template>
 
 <script setup>
 import FFGeometry from "@/components/FFGeometry.vue";
 import Projects from "@/components/Projects.vue";
 import Skills from "@/components/Skills.vue";
-
-import ProjectModal from "@/components/ProjectModal.vue";
 </script>
 
 <style lang="scss">
@@ -115,7 +117,6 @@ import ProjectModal from "@/components/ProjectModal.vue";
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   img {
     position: absolute;
     z-index: -1;
@@ -125,13 +126,16 @@ import ProjectModal from "@/components/ProjectModal.vue";
     z-index: 0;
     font-size: 1.5rem;
     text-align: right;
-
     p {
       span {
         color: #2472fc;
       }
     }
   }
+}
+
+#FFGeometry-section {
+  display: none;
 }
 
 #projects-section {
@@ -209,6 +213,93 @@ import ProjectModal from "@/components/ProjectModal.vue";
     }
     a:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .fullscreen-container,
+  .maxwidth-container {
+    padding: 0 50px;
+  }
+
+  #skills-section {
+    #skills-intro {
+      width: 100%;
+    }
+  }
+
+  #bio-section {
+    width: 80%;
+
+    p:before {
+      font-size: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  #projects-section {
+    #projects-intro {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .fullscreen-container,
+  .maxwidth-container {
+    padding: 0 12px;
+  }
+
+  #projects-section {
+    padding: 0 20px;
+  }
+
+  .grey-background {
+    padding: 20px 0;
+  }
+
+  #skills-section {
+    height: auto;
+
+    #skills-intro {
+      width: 100%;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  #bio-section {
+    padding: 0;
+  }
+
+  #bio-section {
+    p {
+      font-size: 20px;
+      line-height: 44px;
+    }
+
+    p:before {
+      line-height: 60px;
+    }
+  }
+
+  #contact-section {
+    padding: 12px;
+
+    .maxwidth-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .contact-right {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

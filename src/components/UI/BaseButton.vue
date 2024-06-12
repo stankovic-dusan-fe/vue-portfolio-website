@@ -1,6 +1,10 @@
 <template>
   <button>
-    <a :href="link">{{ buttonTitle }}</a>
+    <a
+      target="_blank"
+      :href="link"
+      >{{ buttonTitle }}</a
+    >
   </button>
 </template>
 
