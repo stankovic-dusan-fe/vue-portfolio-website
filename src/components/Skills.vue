@@ -7,18 +7,24 @@
         alt="skill-clean-code"
       />
     </div>
-    <div class="skill">
+    <div
+      class="skill"
+      id="skill-middle"
+    >
       <p>Pixel perfect</p>
       <img
         src="../assets/images/skills-svg/pixel-perfect.svg"
         alt="skill-pixel-perfect"
       />
     </div>
-    <div class="skill">
+    <div
+      class="skill"
+      id="skill-last"
+    >
       <p>Responsive</p>
       <img
         src="../assets/images/skills-svg/responsive.svg"
-        alt=" skill-responsive"
+        alt="skill-responsive"
       />
     </div>
   </div>
@@ -26,14 +32,16 @@
 
 <style lang="scss" scoped>
 .skills {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
   margin-top: 80px;
 
   .skill {
+    width: 100%;
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -50,6 +58,26 @@
       white-space: nowrap;
     }
   }
+
+  #skill-middle {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+
+    .skill {
+      width: 50%;
+    }
+
+    #skill-middle {
+      flex-direction: column;
+    }
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -59,9 +87,12 @@
     margin-top: 40px;
 
     .skill {
-      width: 100%;
       margin: 0 auto;
       width: 70%;
+    }
+
+    .skill p {
+      font-size: 24px;
     }
   }
 }

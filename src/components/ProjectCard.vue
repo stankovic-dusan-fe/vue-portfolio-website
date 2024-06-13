@@ -7,7 +7,7 @@
     <div
       class="project-img"
       :class="{ 'project-img-active': activeCard }"
-      :style="{ backgroundImage: 'url(' + background + ')' }"
+      :style="{ backgroundImage: 'url(' + cover + ')' }"
     ></div>
     <div class="project-details">
       <h2>{{ title }}</h2>
@@ -22,7 +22,7 @@ import { ref } from "vue";
 
 const activeCard = ref(false);
 
-const props = defineProps(["title", "desc", "img", "background", "link", "project"]);
+const props = defineProps(["title", "desc", "cover", "link", "project"]);
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +35,7 @@ const props = defineProps(["title", "desc", "img", "background", "link", "projec
   align-items: center;
   border-bottom: 1px solid #959595;
   margin-top: 24px;
+  padding-bottom: 24px;
 
   .project-img {
     transition: ease-out 0.6s;
@@ -81,6 +82,7 @@ const props = defineProps(["title", "desc", "img", "background", "link", "projec
 @media screen and (max-width: 700px) {
   .card-container {
     height: 200px;
+    padding-bottom: 12px;
 
     .project-details {
       a {

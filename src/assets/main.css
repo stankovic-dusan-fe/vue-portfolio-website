@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -88,8 +89,8 @@ sup {
 
 @media screen and (max-width: 700px) {
   h1 {
-    font-size: 36px;
-    line-height: 36px;
+    font-size: 30px;
+    line-height: 32px;
   }
 
   h2 {

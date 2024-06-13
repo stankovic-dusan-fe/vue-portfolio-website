@@ -4,13 +4,42 @@
     id="hero-section"
   >
     <div class="hero-text">
-      <h1>Ćao! I’m Dušan</h1>
+      <h1>{{ "Cao" }}! I’m Dušan</h1>
       <p>Front<span>-</span>End<span>_</span>Developer<span>.</span></p>
     </div>
+    <div class="scroll-button">
+      <a href="#tech-section">
+        <svg
+          width="24"
+          height="60"
+          viewBox="0 0 24 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.5"
+            y="0.5"
+            width="23"
+            height="59"
+            rx="11.5"
+            stroke="white"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="7"
+            fill="#D9D9D9"
+          />
+        </svg>
+      </a>
+      <p>Scroll to explore</p>
+    </div>
   </div>
+
   <div
     class="fullscreen-container"
     id="FFGeometry-section"
+    style="display: none"
   >
     <FFGeometry />
   </div>
@@ -87,9 +116,25 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
+
 import FFGeometry from "@/components/FFGeometry.vue";
 import Projects from "@/components/Projects.vue";
 import Skills from "@/components/Skills.vue";
+
+const hello = ["Hello", "Hola", "你好", "こんにちは", "안녕하세요", "Здравствуйте", "Bonjour", "Hallo", "Ciao", "Olá", "CGiá", "Здраво", "Aloha", "Bok", "مرحبا", "नमस्ते", "สวัสดี", "Xin chào", "ਸਤ ਸ੍ਰੀ ਅਕਲ", "Ahoj", "Hej", "Sveiki", "Tere", "Kumusta", "Pozdravljeni", "Sawubona", "Kaixo"];
+
+const greeting = ref("Ćao");
+let index = 0;
+
+const changeHello = () => {
+  greeting.value = hello[index];
+  index = (index + 1) % hello.length;
+};
+
+onMounted(() => {
+  setInterval(changeHello, 1000);
+});
 </script>
 
 <style lang="scss">
@@ -117,25 +162,51 @@ import Skills from "@/components/Skills.vue";
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  img {
+
+  .scroll-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
     position: absolute;
-    z-index: -1;
+    bottom: 57px;
+
+    svg {
+      width: 24px;
+
+      circle {
+        transition: transform 0.5s ease-in-out;
+      }
+    }
+
+    svg:hover {
+      cursor: pointer;
+
+      circle {
+        transform: translateY(36px);
+      }
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 14px;
+      font-weight: 100;
+      color: white;
+    }
   }
 
   .hero-text {
     z-index: 0;
     font-size: 1.5rem;
     text-align: right;
+
     p {
       span {
         color: #2472fc;
       }
     }
   }
-}
-
-#FFGeometry-section {
-  display: none;
 }
 
 #projects-section {
@@ -160,6 +231,7 @@ import Skills from "@/components/Skills.vue";
 }
 
 #skills-section {
+  height: auto;
   #skills-intro {
     width: 50%;
   }
@@ -220,7 +292,7 @@ import Skills from "@/components/Skills.vue";
 @media screen and (max-width: 1550px) {
   .fullscreen-container,
   .maxwidth-container {
-    padding: 0 50px;
+    padding: 0 24px;
   }
 
   #skills-section {
@@ -258,6 +330,27 @@ import Skills from "@/components/Skills.vue";
 
   .grey-background {
     padding: 20px 0;
+  }
+
+  #hero-section {
+    .scroll-button {
+      -webkit-tap-highlight-color: transparent;
+      gap: 4px;
+
+      svg {
+        width: 16px;
+      }
+
+      svg:hover {
+        circle {
+          transform: none !important;
+        }
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
   }
 
   #skills-section {
