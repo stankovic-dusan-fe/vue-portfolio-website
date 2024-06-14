@@ -4,11 +4,11 @@
     id="hero-section"
   >
     <div class="hero-text">
-      <h1>{{ "Cao" }}! I’m Dušan</h1>
+      <h1>{{ greeting }}! I’m Dušan</h1>
       <p>Front<span>-</span>End<span>_</span>Developer<span>.</span></p>
     </div>
     <div class="scroll-button">
-      <a href="#tech-section">
+      <a href="#FFGeometry-section">
         <svg
           width="24"
           height="60"
@@ -39,7 +39,6 @@
   <div
     class="fullscreen-container"
     id="FFGeometry-section"
-    style="display: none"
   >
     <FFGeometry />
   </div>
@@ -133,7 +132,7 @@ const changeHello = () => {
 };
 
 onMounted(() => {
-  setInterval(changeHello, 1000);
+  setInterval(changeHello, 1500);
 });
 </script>
 
@@ -158,7 +157,7 @@ onMounted(() => {
 }
 
 #hero-section {
-  background-image: url(../../assets/images/circle-bg.svg);
+  background-image: url(../images/circle-bg.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -254,7 +253,7 @@ onMounted(() => {
     content: "/*";
     color: #8711c1;
     font-size: 120px;
-    line-height: 120px;
+    line-height: 100px;
     font-weight: 700;
   }
 }
@@ -292,7 +291,21 @@ onMounted(() => {
 @media screen and (max-width: 1550px) {
   .fullscreen-container,
   .maxwidth-container {
-    padding: 0 24px;
+    padding: 0 48px;
+  }
+
+  #hero-section {
+    .scroll-button {
+      gap: 0px;
+
+      svg {
+        width: 16px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
   }
 
   #skills-section {

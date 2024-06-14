@@ -175,6 +175,20 @@
   }
 }
 
+@media screen and (max-width: 1250px) {
+  .ff-container {
+    display: none;
+    .frame {
+      width: 50%;
+      height: 50%;
+    }
+
+    .frame-center {
+      width: auto;
+    }
+  }
+}
+
 @media screen and (max-width: 550px) {
   .ff-container {
     width: 100%;

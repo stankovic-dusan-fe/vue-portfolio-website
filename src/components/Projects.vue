@@ -4,7 +4,7 @@
     :key="project.title"
     :title="project.title"
     :desc="project.desc"
-    :cover="`/src/assets/images/${project.cover}`"
+    :cover="`/images/${project.cover}`"
     :link="project.link"
     :project="project"
     @open-modal="openModal(project)"
@@ -45,7 +45,7 @@ const projects = ref([
     web: "https://vue-weather-dashboard.netlify.app/",
     git: "https://github.com/stankovic-dusan-fe/vue-weather-dashboard",
 
-    img: "/src/assets/images/weather-desing.jpg",
+    img: "/images/weather-desing.jpg",
   },
   {
     title: "Budget Tracker",

@@ -3,7 +3,7 @@
     <div class="skill">
       <p>Clean code</p>
       <img
-        src="../assets/images/skills-svg/clean-code.svg"
+        src="/images/skills-svg/clean-code.svg"
         alt="skill-clean-code"
       />
     </div>
@@ -13,7 +13,7 @@
     >
       <p>Pixel perfect</p>
       <img
-        src="../assets/images/skills-svg/pixel-perfect.svg"
+        src="/images/skills-svg/pixel-perfect.svg"
         alt="skill-pixel-perfect"
       />
     </div>
@@ -23,7 +23,7 @@
     >
       <p>Responsive</p>
       <img
-        src="../assets/images/skills-svg/responsive.svg"
+        src="/images/skills-svg/responsive.svg"
         alt="skill-responsive"
       />
     </div>
