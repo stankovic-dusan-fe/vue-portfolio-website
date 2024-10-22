@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test-build": "vite build && sudo netlify deploy --prod"
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",

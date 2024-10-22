@@ -30,10 +30,18 @@
             />
           </div>
         </div>
-        <div
+
+        <!-- <div
           class="project-image"
           :style="{ backgroundImage: 'url(' + project.img + ')' }"
-        ></div>
+          
+        ></div> -->
+        <div class="project-image">
+          <img
+            :src="project.img"
+            alt="project-image"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -67,6 +75,7 @@ onClickOutside(modal, () => {
   z-index: 0;
   overflow-x: hidden;
   overflow-y: scroll;
+  z-index: 10;
 
   .project-modal {
     position: fixed;
@@ -74,10 +83,10 @@ onClickOutside(modal, () => {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: calc(1440px + 160px);
+    max-width: calc(1440px + 232px);
+    height: 708px;
     background-color: white;
     color: black;
-    height: auto;
     border-radius: 64px 64px 0 0;
     margin: 0 auto;
     display: flex;
@@ -93,19 +102,29 @@ onClickOutside(modal, () => {
       font-size: 16px;
       font-weight: 300;
       width: 100%;
-      margin-bottom: 32px;
+      margin-bottom: 64px;
       cursor: pointer;
     }
 
     .modal-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 24px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
 
       .project-info {
+        width: 744px;
+        height: 456px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         h2 {
-          font-weight: 400;
-          line-height: 88px;
+          font-size: 56px;
+          line-height: 80px;
+          font-weight: normal;
         }
 
         #tech {
@@ -113,15 +132,13 @@ onClickOutside(modal, () => {
           font-size: 16px;
           line-height: 24px;
           font-weight: 600;
-          margin: 48px 0;
         }
 
         p {
           text-transform: none;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 24px;
           font-weight: 300;
-          margin-top: 24px;
         }
 
         .buttons {
@@ -132,42 +149,91 @@ onClickOutside(modal, () => {
 
       .project-image {
         width: 100%;
-        height: 100%;
-        margin-bottom: 20px;
-        background-color: red;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        max-width: 615px;
+        height: 456px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1330px) {
+  .modal-wrapper {
+    .project-modal {
+      height: auto;
+      padding: 60px;
+      .modal-content {
+        gap: 12px;
+
+        .project-image {
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal-wrapper {
+    .project-modal {
+      .modal-content {
+        .project-info {
+          height: auto;
+          gap: 12px;
+          h2 {
+            font-size: 48px;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
   .modal-wrapper {
     .project-modal {
       position: relative;
-      min-height: 100vh;
       width: 100%;
       height: auto;
+      min-height: 100vh;
       border-radius: 0;
-      padding: 32px;
+      padding: 24px;
       display: flex;
       justify-content: flex-start;
+      align-items: flex-start;
 
       .close-modal {
         margin-bottom: 20px;
       }
 
       .modal-content {
+        height: auto;
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-start;
 
         .project-info {
+          height: auto;
+          width: 100%;
+
           h2 {
+            width: 100%;
+            font-size: 2rem;
             line-height: normal;
             margin-bottom: 20px;
+            text-wrap: auto;
           }
 
           p {
@@ -186,12 +252,13 @@ onClickOutside(modal, () => {
 
         .project-image {
           width: 100%;
-          height: 30vh;
-          margin-bottom: 20px;
-          background-color: white;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
+          height: auto;
+          margin-top: 12px;
+          margin-bottom: 24px;
+
+          img {
+            width: 100%;
+          }
         }
       }
     }

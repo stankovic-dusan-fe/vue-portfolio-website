@@ -80,8 +80,10 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 638px) {
   .skills {
+    width: calc(100% + 24px);
+    margin: 0 -12px;
     grid-template-columns: 1fr;
     grid-gap: 0;
     margin-top: 40px;

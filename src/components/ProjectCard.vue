@@ -1,5 +1,6 @@
 <template>
   <div
+    @click="$emit('openModal')"
     class="card-container"
     @mouseover="activeCard = true"
     @mouseleave="activeCard = false"
@@ -12,7 +13,7 @@
     <div class="project-details">
       <h2>{{ title }}</h2>
       <p>{{ desc }}</p>
-      <a @click="$emit('openModal')">View Project Details</a>
+      <a>View Project Details</a>
     </div>
   </div>
 </template>
@@ -27,7 +28,7 @@ const props = defineProps(["title", "desc", "cover", "link", "project"]);
 
 <style lang="scss" scoped>
 .card-container {
-  cursor: default;
+  cursor: pointer;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -45,6 +46,7 @@ const props = defineProps(["title", "desc", "cover", "link", "project"]);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    border-radius: 8px;
   }
 
   .project-img-active {
@@ -66,7 +68,7 @@ const props = defineProps(["title", "desc", "cover", "link", "project"]);
       line-height: 32px;
       text-decoration: none;
       text-transform: uppercase;
-      cursor: pointer;
+
       -webkit-tap-highlight-color: transparent;
     }
   }
@@ -76,15 +78,15 @@ const props = defineProps(["title", "desc", "cover", "link", "project"]);
   border-bottom: 0px;
 }
 
-@media screen and (max-width: 1250px) {
-}
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 480px) {
   .card-container {
     height: 200px;
     padding-bottom: 12px;
 
     .project-details {
+      p {
+        margin: 10px 0;
+      }
       a {
         font-size: 16px;
       }
